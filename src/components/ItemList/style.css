@@ -1,0 +1,45 @@
+
+.outblock{
+  background:rgb(240, 237, 237);
+  padding: 5px;
+  margin-left: 300px;
+  margin-right: 300px;
+  margin-top: 5px; 
+  text-align: left;
+}
+
+.outblock:hover {
+  background:rgb(229, 229, 229);
+  padding: 5px;
+  margin-left: 300px;
+  margin-right: 300px;
+  margin-top: 5px; 
+  text-align: left;
+}
+
+.Show_Items_Num {
+  border: none;
+  text-align: left;
+  /* float: left; */
+}
+
+.Show_done_Set {
+  border: none;
+  text-align: right;
+  /* float: right; */
+}
+
+.Show_done_Items {
+
+  height: 50px;
+  margin-left: 150px;
+  margin-right: 150px;
+
+}
+
+.buttonStyle{
+  background:rgb(240, 237, 237);
+  border: none;
+  float: right;
+  margin-top: 2px;
+}
