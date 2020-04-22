@@ -18,7 +18,8 @@ const AddItem = () => {
         Items.push({
             key:shortid.generate(),
             ToDoItem: ListItem,
-            complete: false
+            complete: false,
+            completeTime: ''
         });
 
         setStoreListItems(Items);

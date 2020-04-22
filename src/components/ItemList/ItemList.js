@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './style.css';
 import { ListItemStore } from '../../store/ListItemStore';
+import moment from 'moment'
 
 const ItemList = () => {
 
@@ -8,7 +9,7 @@ const ItemList = () => {
     const ListStore = ListItemStore();
 
     const [showCheck, setshowCheck] = useState(true);
-    const [showItem, setshowItem] = useState(ListStore.storeListItems);
+    const [showItemCount, setshowItemCount] = useState(ListStore.storeListItems.length + ' item(s)');
 
     let NumShow = ListStore.storeListItems.length + ' item(s)'
 
@@ -26,7 +27,7 @@ const ItemList = () => {
             if (Items[i].key === id) {
 
                 Items[i].complete = !Items[i].complete;
-
+                Items[i].completeTime = '完成時間：' + moment().format('YYYY-MM-DD HH:mm');
             }
         }
 
@@ -80,22 +81,34 @@ const ItemList = () => {
             }
 
         });
-        console.log(filterShow);
-        console.log(items);
+        setshowItemCount(filterShow.length + ' item(s)');
 
         return (
 
             filterShow.map((list) =>
-                <div className="todolist__edit" key={list.key}>
+                <div className="todolist" key={list.key}>
 
                     <p
                         style={{
                             textDecoration: list.complete ? "line-through" : ""
+
                         }}
                     >
                         {list.ToDoItem}
-                        <button className="buttonStyle" type="button" onClick={() => DeleteItem(list.key)}>Delete</button>
-                        <button className="buttonStyle" type="button" onClick={() => completeChange(list.key)}>Mark as Done</button>
+                        <button className={
+                            list.complete ? "buttonStyleTest" : "buttonStyle"
+                        }
+                            type="button" onClick={() => DeleteItem(list.key)}>Delete</button>
+
+                        <button className={
+                            list.complete ? "buttonStyleTest" : "buttonStyle"
+                        }
+                            type="button" onClick={() => completeChange(list.key)}>Mark as Done</button>
+
+                        <button className={
+                            list.complete ? "buttonStyleT" : "buttonStyle"
+                        }
+                            type="button">{list.completeTime}</button>
                     </p >
 
                 </div>
@@ -112,8 +125,8 @@ const ItemList = () => {
 
             <div className="Show_done_Items" >
 
-                <p style={{  float: "left", width: "30%" }}>{NumShow}</p>
-                <p style={{  float: "right", width: "30%" }}>
+                <p style={{ float: "left", width: "30%" }}>{showItemCount}</p>
+                <p style={{ float: "right", width: "30%" }}>
                     <input type="checkbox" value="true" onChange={() => onChangeShow(showCheck)} checked={showCheck} />
                      Show done Items</p>
             </div>
@@ -124,7 +137,7 @@ const ItemList = () => {
             </div>
 
         </div>
-       
+
     );
 
 };
