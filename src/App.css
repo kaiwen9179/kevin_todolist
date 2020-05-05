@@ -1,5 +1,26 @@
-
 .basicDiv{
   text-align: center;
 
 }
+
+.container{
+  text-align: center;
+}
+
+ #ToDoList{
+  font-size: 50px;
+  padding-top: 20px;
+}
+
+#SecondList{
+  font-size: 30px;
+  color: rgb(187, 184, 184);
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+
+/*#List{
+  border: 5px solid rgb(59, 87, 216);
+  flex: 1;
+} */

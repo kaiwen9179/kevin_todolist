@@ -1,0 +1,12 @@
+.container{
+    margin-bottom: 20px; 
+
+  }
+
+  .container > input{
+    font-size: 30px;
+  }
+
+  .container > button{
+    font-size: 30px;
+  }

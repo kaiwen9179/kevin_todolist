@@ -10,9 +10,17 @@ const App = () => {
   return (
     <div className='basicDiv'>
       <ListItemContextProvider>
-        <h1>To Do List</h1>
-        <AddItem />
-        <ItemList />
+        <div className='container'>
+          {/* <section className='A'>
+						<p id ='ToDoList'>ToDo <b>List</b></p>
+					</section> */}
+          <section id='ToDoList'>ToDo <b>List</b></section>
+          <section id='SecondList'>A Simple todolist built react hooks & context</section>
+        </div>
+        <div>
+          <AddItem />
+          <ItemList />
+        </div>
       </ListItemContextProvider>
     </div>
   );

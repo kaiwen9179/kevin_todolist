@@ -15,20 +15,39 @@ const AddItem = () => {
     const AddTodoItems = () => {
 
         let Items = [...ListStore.storeListItems];
-        Items.push({
-            key:shortid.generate(),
-            ToDoItem: ListItem,
-            complete: false,
-            completeTime: ''
-        });
 
-        setStoreListItems(Items);
-       
+        let i;
+        let len;
+        let Bool_CanInsert = true;
+        for (i = 0, len = Items.length; i < len; i++) {
+
+            if (Items[i].ToDoItem === ListItem && Items[i].complete === false) {
+
+                Bool_CanInsert = false;
+            }
+        }
+
+        if (Bool_CanInsert === true) {
+
+            Items.push({
+                key: shortid.generate(),
+                ToDoItem: ListItem,
+                complete: false,
+                completeTime: ''
+            });
+
+            setStoreListItems(Items);
+        }
+        else {
+            alert('此備註已經新增過搂~');
+        }
+
+
     };
 
 
     return (
-        <div style={{ marginBottom: "20px" }}>
+        <div className='container'>
             <input placeholder="Add your task here…" type="text" name="AddItem" onChange={e => setListItem(e.target.value)} />
             <button type="button" onClick={AddTodoItems}>Add</button>
         </div>
