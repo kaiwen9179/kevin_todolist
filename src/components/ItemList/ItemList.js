@@ -3,19 +3,19 @@ import './style.css';
 import { ListItemStore } from '../../store/ListItemStore';
 import moment from 'moment'
 
-const ItemList = () => {
+const ItemList = (props) => {
 
-
+    const { NewAdd,ItemList } = props;
     const ListStore = ListItemStore();
 
     const [showCheck, setshowCheck] = useState(true);
-    const [showItemCount, setshowItemCount] = useState(ListStore.storeListItems.length + ' item(s)');
+    const [showItemCount, setshowItemCount] = useState(ItemList.length + ' item(s)');
 
-    let NumShow = ListStore.storeListItems.length + ' item(s)'
+    let NumShow = ItemList.length + ' item(s)'
 
     const completeChange = (id) => {
 
-        const Items = [...ListStore.storeListItems];
+        const Items = [...ItemList];
 
         console.log(Items);
         console.log(id);
@@ -31,13 +31,13 @@ const ItemList = () => {
             }
         }
 
-        ListStore.setStoreListItems(Items)
+        NewAdd(Items)
 
     };
 
     const DeleteItem = (id) => {
 
-        const Items = [...ListStore.storeListItems];
+        const Items = [...ItemList];
 
         let i;
         let i_remove;
@@ -52,7 +52,7 @@ const ItemList = () => {
         console.log(id);
         Items.splice(i_remove, 1);
 
-        ListStore.setStoreListItems(Items)
+        NewAdd(Items)
 
         console.log(Items);
 
@@ -133,7 +133,7 @@ const ItemList = () => {
 
 
             <div className="outblock">
-                <TodoItems items={ListStore.storeListItems} />
+                <TodoItems items={ItemList} />
             </div>
 
         </div>

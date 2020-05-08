@@ -4,17 +4,24 @@ import shortid from 'shortid';
 import { ListItemStore } from '../../store/ListItemStore';
 
 
-const AddItem = () => {
+const AddItem = (props) => {
 
-
+    const { NewAdd, ItemList } = props;
     const ListStore = ListItemStore();
     const { setStoreListItems } = ListItemStore();
 
-    const [ListItem, setListItem] = useState({});
+    const [ListItem, setListItem] = useState('');
 
     const AddTodoItems = () => {
 
-        let Items = [...ListStore.storeListItems];
+        if (ListItem === "") {
+            console.log(ListItem);
+            
+            alert('請輸入備忘事項');
+            return;
+        }
+
+        let Items = [...ItemList];
 
         let i;
         let len;
@@ -36,12 +43,11 @@ const AddItem = () => {
                 completeTime: ''
             });
 
-            setStoreListItems(Items);
+            NewAdd(Items);
         }
         else {
             alert('此備註已經新增過搂~');
         }
-
 
     };
 

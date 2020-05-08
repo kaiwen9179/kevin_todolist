@@ -9,6 +9,7 @@
 
 .outblock :hover{
   background:rgb(229, 229, 229);
+
 }
 
 .todolist {
@@ -21,10 +22,13 @@
 
 .todolist:hover .buttonStyle{
   display:block;
+  cursor: pointer; 
+
 }
 
 .todolist:hover .buttonStyleT{
   background:rgb(229, 229, 229);
+
 }
 
 .Show_done_Items {

@@ -7,19 +7,26 @@ import { ListItemContextProvider } from '../src/store/ListItemStore';
 
 const App = () => {
 
+  const [NewListItem, setNewListItem] = useState([]);
+
+
+  const ModifyTodoItems = (NewItem) => {
+
+    setNewListItem(NewItem);
+   console.log(NewItem);
+   
+};
+
   return (
     <div className='basicDiv'>
       <ListItemContextProvider>
         <div className='container'>
-          {/* <section className='A'>
-						<p id ='ToDoList'>ToDo <b>List</b></p>
-					</section> */}
           <section id='ToDoList'>ToDo <b>List</b></section>
           <section id='SecondList'>A Simple todolist built react hooks & context</section>
         </div>
         <div>
-          <AddItem />
-          <ItemList />
+          <AddItem NewAdd={(text)=>ModifyTodoItems(text)} ItemList={NewListItem}/>
+          <ItemList NewAdd={(text)=>ModifyTodoItems(text)} ItemList={NewListItem} />
         </div>
       </ListItemContextProvider>
     </div>
